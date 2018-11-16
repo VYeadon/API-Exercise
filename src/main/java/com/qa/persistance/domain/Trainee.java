@@ -4,12 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Trainees")
+//@Table(name="Trainees")
 public class Trainee {
 	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -17,10 +14,6 @@ public class Trainee {
 	private int traineeID;
 	
 	private String traineeName;
-	
-	@ManyToOne
-    @JoinColumn(name="classroomID")
-	private Classroom classroom;
 	
 	public Trainee() {}
 
@@ -39,4 +32,5 @@ public class Trainee {
 	public void setTraineeName(String traineeName) {
 		this.traineeName = traineeName;
 	}
+	
 }
