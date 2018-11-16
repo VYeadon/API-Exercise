@@ -6,17 +6,17 @@ public class JSONToJavaUtility {
 
 	// No statics needs to be injected when its called
 	
-    private static Gson gson = new Gson();;
+    private Gson gson = new Gson();;
 
     public JSONToJavaUtility() {
         this.gson = new Gson();
     }
 
-    public static String getJSONFromObject(Object obj) {
+    public String getJSONFromObject(Object obj) {
         return gson.toJson(obj);
     }
 
-    public static <T> T getObjectFromJSON(String jsonString, Class<T> clazz) {
+    public <T> T getObjectFromJSON(String jsonString, Class<T> clazz) {
         return gson.fromJson(jsonString, clazz);
     }
 

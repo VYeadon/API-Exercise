@@ -21,15 +21,17 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 	private EntityManager manager;
 	
 	@Transactional(REQUIRED)
-	public void setClassroomInformation(Classroom classToBeSet)
+	public String setClassroomInformation(Classroom classToBeSet)
 	{
 		manager.persist(classToBeSet);
+		return 
+			"{\"message\": \"account has been sucessfully added\"}";
 	}
 	
-	public Classroom getClassroomInformation(Classroom classToBeGet)
+	public Classroom getClassroomInformation(int classroomIDToBeGotten)
 	{
 		return
-			manager.find(Classroom.class, classToBeGet.getClassroomID());
+			manager.find(Classroom.class, classroomIDToBeGotten);
 	}
 	
 	public Collection<Classroom> getAllUsers()
@@ -48,8 +50,17 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 	}
 	
 	@Transactional(REQUIRED)
-	public void deleteClassroomInformation(Classroom ClassroomToBeDeleted)
+	public boolean deleteClassroomInformation(Classroom ClassroomToBeDeleted)
 	{
-		manager.remove(ClassroomToBeDeleted);
+		if(manager.contains(ClassroomToBeDeleted))
+		{
+			manager.remove(ClassroomToBeDeleted);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 }
