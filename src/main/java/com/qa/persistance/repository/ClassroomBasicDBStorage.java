@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 
 @Transactional(SUPPORTS)
 @Default
@@ -34,24 +35,29 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 			manager.find(Classroom.class, classroomIDToBeGotten);
 	}
 	
-	public Collection<Classroom> getAllUsers()
+	@SuppressWarnings("unchecked")
+	public Collection<Classroom> getAllClassroomInformation()
 	{
-		Query managerQuery = manager.createQuery("Select a FROM Account a");
+		Query managerQuery = manager.createQuery("Select a FROM Classroom a");
+
 		Collection<Classroom> listOfClassrooms = (Collection<Classroom>) managerQuery.getResultList();
 		return listOfClassrooms;
 	}
 	
 	@Transactional(REQUIRED)
-	public String updateClassroomInofrmation(Classroom ClassroomToBeUpdated)
+	public String updateClassroomInformation(Classroom updatedClassroomInfo, int classroomID)
 	{
-		manager.merge(ClassroomToBeUpdated);
+		Classroom oldClassroomFromDB = getClassroomObject(classroomID);
+		oldClassroomFromDB = updatedClassroomInfo;
+		manager.merge(oldClassroomFromDB);
 		return 
 			"{\"message\": \"account sucessfully updated\"}";
 	}
 	
 	@Transactional(REQUIRED)
-	public boolean deleteClassroomInformation(Classroom ClassroomToBeDeleted)
+	public boolean deleteClassroomInformation(int classroomID)
 	{
+		Classroom ClassroomToBeDeleted = manager.find(Classroom.class, classroomID);
 		if(manager.contains(ClassroomToBeDeleted))
 		{
 			manager.remove(ClassroomToBeDeleted);
@@ -62,5 +68,9 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 			return false;
 		}
 		
+	}
+	
+	private Classroom getClassroomObject(int classroomID) {
+		return manager.find(Classroom.class, classroomID);
 	}
 }

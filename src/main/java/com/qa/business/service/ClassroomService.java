@@ -3,6 +3,7 @@ package com.qa.business.service;
 import javax.inject.Inject;
 
 import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 import com.qa.persistance.repository.ClassroomPersistantStorageInterface;
 import com.qa.util.JSONToJavaUtility;
 
@@ -32,28 +33,34 @@ public class ClassroomService implements ClassroomServiceInterface{
 			JSONUtilityTool.getJSONFromObject(classroomToBegotten);
 				
 	}
-
-	public String getAllUsers() {
-
+	
+	public String getAllClassroomInformation()
+	{
 		return
-			JSONUtilityTool.getJSONFromObject(
-					classroomDataHandler.getAllUsers());
+				JSONUtilityTool.getJSONFromObject(
+						classroomDataHandler.getAllClassroomInformation());
 	}
 
-	public String updateClassroomInofrmation(String JSONClassroomToBeUpdatedInfoString) {
+	public String updateClassroomInformation(String JSONClassroomToBeUpdatedInfoString, int classroomID) {
 		Classroom updatedClassroom = JSONUtilityTool.getObjectFromJSON(
 				JSONClassroomToBeUpdatedInfoString, Classroom.class);
 		
 		return
-			classroomDataHandler.updateClassroomInofrmation(updatedClassroom);
+			classroomDataHandler.updateClassroomInformation(updatedClassroom, classroomID);
 	}
 
-	public boolean deleteClassroomInformation(String JSONClassroomToBeDeletedInfoString) {
-		Classroom classroomToBeDeleted = JSONUtilityTool.getObjectFromJSON(
-				JSONClassroomToBeDeletedInfoString, Classroom.class);
+	public String deleteClassroomInformation(int classroomID) {
 		
-		return
-			classroomDataHandler.deleteClassroomInformation(classroomToBeDeleted);
+			if(classroomDataHandler.deleteClassroomInformation(classroomID))
+			{
+				return 
+					"{\"message\": \"account has been sucessfully deleted\"}";
+			}
+			else
+			{
+				return
+					"{\"message\": \"account has not been sucessfully deleted\"}";
+			}
 	}
 
 }
