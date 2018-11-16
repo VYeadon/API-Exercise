@@ -19,8 +19,7 @@ public class Classroom {
 	
 	private String trainer;
 	
-	@OneToMany(targetEntity=com.qa.persistance.domain.Trainee.class,
-            mappedBy="classroom")
+	@OneToMany(mappedBy="classroom")
 	private Set<Trainee> trainees;
 	
 	public Classroom() {}

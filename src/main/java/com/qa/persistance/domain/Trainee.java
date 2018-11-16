@@ -19,7 +19,7 @@ public class Trainee {
 	private String traineeName;
 	
 	@ManyToOne
-    @JoinColumn(name="classroomID", nullable=false)
+    @JoinColumn(name="classroomID")
 	private Classroom classroom;
 	
 	public Trainee() {}
