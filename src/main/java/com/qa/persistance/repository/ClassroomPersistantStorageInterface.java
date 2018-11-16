@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 
 public interface ClassroomPersistantStorageInterface {
 

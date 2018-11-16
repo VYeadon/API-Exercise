@@ -2,6 +2,7 @@ package com.qa.persistance.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +20,8 @@ public class Classroom {
 	
 	private String trainer;
 	
-	@OneToMany(mappedBy="classroom")
+	@OneToMany(cascade=CascadeType.PERSIST,
+            mappedBy="classroom")
 	private Set<Trainee> trainees;
 	
 	public Classroom() {}

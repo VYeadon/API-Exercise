@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 
 @Transactional(SUPPORTS)
 @Default

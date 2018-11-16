@@ -3,6 +3,7 @@ package com.qa.business.service;
 import javax.inject.Inject;
 
 import com.qa.persistance.domain.Classroom;
+import com.qa.persistance.domain.Trainee;
 import com.qa.persistance.repository.ClassroomPersistantStorageInterface;
 import com.qa.util.JSONToJavaUtility;
 
