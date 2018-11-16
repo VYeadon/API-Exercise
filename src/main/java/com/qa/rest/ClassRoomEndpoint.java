@@ -11,13 +11,13 @@ import javax.ws.rs.Produces;
 
 import com.qa.business.service.ClassroomServiceInterface;
 
-@Path("/account")
+@Path("/classroom")
 public class ClassRoomEndpoint {
 	
 	@Inject
 	private ClassroomServiceInterface service;
 
-	@Path("/classroom")
+	@Path("/operations")
 	@GET
 	@Produces({ "application/json" })
 	public String returnAllUserAccounts() {
@@ -25,7 +25,7 @@ public class ClassRoomEndpoint {
 			service.getAllClassroomInformation();
 	}
 
-	@Path("/classroom")
+	@Path("/operations")
 	@POST
 	@Produces({ "application/json" })
 	public String addNewAccount(String JSONClassroomInfoString) {
@@ -33,7 +33,7 @@ public class ClassRoomEndpoint {
 			service.setClassroomInformation(JSONClassroomInfoString);
 	}
 	
-	@Path("/classroom/{classroomID}")
+	@Path("/operations/{classroomID}")
 	@PUT
 	@Produces({ "application/json" })
 	public String updateAccount(@PathParam("classroomID") int classroomID, String JSONClassroomToBeUpdatedInfoString) {
@@ -42,7 +42,7 @@ public class ClassRoomEndpoint {
 			service.updateClassroomInformation(JSONClassroomToBeUpdatedInfoString, classroomID);
 	}
 	
-	@Path("/jclassroomson/{classroomID}")
+	@Path("/operations/{classroomID}")
 	@DELETE
 	@Produces({ "application/json" })
 	public String deleteAccount(@PathParam("classroomID") int classroomID) {
