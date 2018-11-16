@@ -6,10 +6,10 @@ public interface ClassroomServiceInterface {
 	
 	public String getClassroomInformation(int classroomIDToBeGotten);
 	
-	public String getAllUsers();
+	public String getAllClassroomInformation();
 	
-	public String updateClassroomInofrmation(String JSONClassroomToBeUpdatedInfoString);
+	public String updateClassroomInformation(String JSONClassroomToBeUpdatedInfoString, int classroomID);
 	
-	public boolean deleteClassroomInformation(String JSONClassroomToBeDeletedInfoString);
+	public String deleteClassroomInformation(int classroomID);
 	
 }

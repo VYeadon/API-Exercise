@@ -11,9 +11,9 @@ public interface ClassroomPersistantStorageInterface {
 	
 	public Classroom getClassroomInformation(int classroomIDToBeGotten);
 	
-	public Collection<Classroom> getAllUsers();
+	public Collection<Classroom> getAllClassroomInformation();
 	
-	public String updateClassroomInofrmation(Classroom ClassroomToBeUpdated);
+	public String updateClassroomInformation(Classroom ClassroomToBeUpdated, int classroomID);
 	
-	public boolean deleteClassroomInformation(Classroom ClassroomToBeDeleted);
+	public boolean deleteClassroomInformation(int classroomID);
 }
