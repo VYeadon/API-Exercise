@@ -37,7 +37,7 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 	@SuppressWarnings("unchecked")
 	public Collection<Classroom> getAllClassroomInformation()
 	{
-		Query managerQuery = manager.createQuery("Select a FROM Account a");
+		Query managerQuery = manager.createQuery("Select a FROM Classroom a");
 
 		Collection<Classroom> listOfClassrooms = (Collection<Classroom>) managerQuery.getResultList();
 		return listOfClassrooms;
