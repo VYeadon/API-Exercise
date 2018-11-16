@@ -48,7 +48,10 @@ public class ClassroomBasicDBStorage implements ClassroomPersistantStorageInterf
 	public String updateClassroomInformation(Classroom updatedClassroomInfo, int classroomID)
 	{
 		Classroom oldClassroomFromDB = getClassroomObject(classroomID);
-		oldClassroomFromDB = updatedClassroomInfo;
+		
+		oldClassroomFromDB.setTrainer(updatedClassroomInfo.getTrainer());
+		oldClassroomFromDB.setTrainees(updatedClassroomInfo.getTrainees());
+		
 		manager.merge(oldClassroomFromDB);
 		return 
 			"{\"message\": \"account sucessfully updated\"}";
